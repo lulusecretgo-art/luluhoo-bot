@@ -13,26 +13,23 @@
         
         .container { max-width: 850px; margin: 30px auto; padding: 30px; background: #2c2f33; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         
-        /* Conteneur pour aligner les deux boutons */
-        .header-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+        .header-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 20px; align-items: center; }
 
-        .btn-invite { display: inline-block; background-color: #ffffff; color: #2ecc71; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: 2px solid #ffffff; font-size: 1em; }
-        .btn-invite:hover { background-color: transparent; color: #ffffff; box-shadow: 0 0 15px rgba(255,255,255,0.4); }
+        .btn-invite { display: inline-block; background-color: #ffffff; color: #2ecc71; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: 2px solid #ffffff; }
+        .btn-invite:hover { background-color: transparent; color: #ffffff; }
 
-        /* Style du bouton de connexion Discord */
-        .btn-login { display: inline-block; background-color: #5865F2; color: white; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: 2px solid #5865F2; font-size: 1em; }
-        .btn-login:hover { background-color: #4752C4; border-color: #4752C4; box-shadow: 0 0 15px rgba(88, 101, 242, 0.4); }
+        .btn-login { display: inline-block; background-color: #5865F2; color: white; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; transition: 0.3s; border: 2px solid #5865F2; }
+        .btn-login:hover { background-color: #4752C4; box-shadow: 0 0 15px rgba(88, 101, 242, 0.4); }
         
+        /* Style Profil Connecté */
+        #user-profile { display: none; align-items: center; gap: 10px; background: #23272a; padding: 5px 15px; border-radius: 20px; border: 1px solid #4f545c; }
+        #user-avatar { width: 28px; height: 28px; border-radius: 50%; }
+        #user-name { font-weight: 600; color: white; font-size: 0.9em; }
+
         .section-title { color: #2ecc71; border-bottom: 2px solid #2ecc71; padding-bottom: 10px; margin-top: 40px; display: flex; align-items: center; gap: 10px; }
-        .command { background: #23272a; padding: 15px; margin: 12px 0; border-radius: 8px; font-family: 'Courier New', monospace; border-left: 4px solid #2ecc71; transition: 0.2s; }
-        .command:hover { background: #2a2e31; transform: translateX(5px); }
-        
-        .contact-link { color: #2ecc71; text-decoration: none; font-weight: bold; transition: 0.3s; padding: 2px 5px; border-radius: 4px; background: rgba(46, 204, 113, 0.1); }
-        .contact-link:hover { background: #2ecc71; color: white; }
+        .command { background: #23272a; padding: 15px; margin: 12px 0; border-radius: 8px; font-family: 'Courier New', monospace; border-left: 4px solid #2ecc71; }
 
         .footer { text-align: center; padding: 40px; font-size: 0.9em; color: #72767d; }
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -44,35 +41,57 @@
     
     <div class="header-buttons">
         <a href="https://discord.com/oauth2/authorize?client_id=1471941811093246145&permissions=8&integration_type=0&scope=bot" class="btn-invite">Ajouter Luluhoo Bot</a>
-        <a href="https://discord.com/users/1156276663290708078" class="btn-login">Se connecter avec Discord</a>
+        
+        <a href="https://discord.com/oauth2/authorize?client_id=1471941811093246145&response_type=code&redirect_uri=https%3A%2F%2Flulusecretgo-art.github.io%2Fluluhoo-bot%2F&scope=identify" class="btn-login" id="login-button">Se connecter avec Discord</a>
+        
+        <div id="user-profile">
+            <img id="user-avatar" src="" alt="">
+            <span id="user-name"></span>
+            <span style="font-size: 0.7em; margin-left: 5px;">▼</span>
+        </div>
     </div>
 </header>
 
 <div class="container">
     <h2 class="section-title">📜 Commandes principales</h2>
-    <div class="command">/serverinfo - Affiche les informations détaillées du serveur</div>
-    <div class="command">/ping - Tester la latence du bot</div>
+    <div class="command">/serverinfo - Infos détaillées du serveur</div>
+    <div class="command">/ping - Tester la latence</div>
 
     <h2 class="section-title">⚙️ Autres commandes (Préfixe : !)</h2>
-    <div class="command">!member - Le bot dit le nombre actuel de membres sur le serveur</div>
+    <div class="command">!member - Nombre actuel de membres</div>
     
     <h2 class="section-title">⚖️ Politique de Confidentialité</h2>
-    <p><strong>Luluhoo Bot</strong> s'engage pour la protection de votre vie privée :</p>
-    <ul>
-        <li><strong>Collecte minimale :</strong> Nous ne stockons que les identifiants techniques indispensables (User ID, Server ID).</li>
-        <li><strong>Zéro espionnage :</strong> Aucun message privé n'est lu, analysé ou enregistré.</li>
-        <li><strong>Droit à l'oubli :</strong> Toutes les données liées à un serveur sont automatiquement supprimées si le bot est retiré.</li>
-    </ul>
-    
-    <p style="margin-top: 30px; text-align: center; background: #23272a; padding: 15px; border-radius: 10px;">
-        Pour toute question ou support, n'hésitez pas à 
-        <a href="https://discord.com/users/1156276663290708078" class="contact-link">contacter le développeur sur Discord</a>.
-    </p>
+    <p>Nous respectons votre vie privée. Aucune donnée n'est revendue.</p>
 </div>
 
 <div class="footer">
     © 2026 Luluhoo Bot | Hébergé par GitHub Pages
 </div>
+
+<script>
+    window.onload = () => {
+        // On cherche le token dans l'URL après le #
+        const fragment = new URLSearchParams(window.location.hash.slice(1));
+        const accessToken = fragment.get('access_token');
+
+        if (accessToken) {
+            fetch('https://discord.com/api/users/@me', {
+                headers: { authorization: `Bearer ${accessToken}` }
+            })
+            .then(res => res.json())
+            .then(user => {
+                document.getElementById('login-button').style.display = 'none';
+                document.getElementById('user-profile').style.display = 'flex';
+                document.getElementById('user-name').innerText = user.username;
+                document.getElementById('user-avatar').src = `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png`;
+                
+                // On nettoie l'URL pour faire propre
+                window.history.replaceState({}, document.title, window.location.pathname);
+            })
+            .catch(err => console.error("Erreur Discord:", err));
+        }
+    };
+</script>
 
 </body>
 </html>
